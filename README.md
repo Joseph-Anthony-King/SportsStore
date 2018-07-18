@@ -1,0 +1,3 @@
+﻿# Sports Store application from Pro ASP.NET Core MVC2
+
+This is my implementation of the example project from [Pro ASP.NET Core MVC 2](https://www.apress.com/us/book/9781484231494) by [Adam Freeman](https://www.amazon.com/default/e/B005DOMYNE?redirectedFromKindleDbs=true).  This implementation was developed on [Ubuntu 18.04](http://releases.ubuntu.com/releases/18.04/) using the Terminal and [Visual Studio Code](https://code.visualstudio.com/).  It is also configured for and can be developed on [Visual Studio 2017 - Community Edition](https://visualstudio.microsoft.com/downloads/).
