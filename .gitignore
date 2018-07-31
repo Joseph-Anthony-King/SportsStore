@@ -39,3 +39,4 @@ bootstrap
 
 # Exclude SQLite database files
 #*.db
+*.db-journal
