@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-﻿using System.Collections.Generic;
-=======
-﻿using System;
-using System.Collections.Generic;
->>>>>>> c16f3423e495845ce04589d955a582da533fde77
 using System.Linq;
 using Moq;
 using SportsStore.Controllers;
@@ -20,14 +14,6 @@ namespace SportsStore.Tests
         {
             // Arrange
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-<<<<<<< HEAD
-            mock.Setup(m => m.Products).Returns((new Product[] {
-                new Product {ProductID = 1, Name = "P1"},
-                new Product {ProductID = 2, Name = "P2"},
-                new Product {ProductID = 3, Name = "P3"},
-                new Product {ProductID = 4, Name = "P4"},
-                new Product {ProductID = 5, Name = "P5"}
-=======
 
             mock.Setup(m => m.Products).Returns((new Product[] {
                 new Product { ProductID = 1, Name = "P1" },
@@ -35,7 +21,6 @@ namespace SportsStore.Tests
                 new Product { ProductID = 3, Name = "P3" },
                 new Product { ProductID = 4, Name = "P4" },
                 new Product { ProductID = 5, Name = "P5" }
->>>>>>> c16f3423e495845ce04589d955a582da533fde77
             }).AsQueryable<Product>());
 
             ProductController controller = new ProductController(mock.Object) { PageSize = 3 };
@@ -50,17 +35,9 @@ namespace SportsStore.Tests
             Assert.Equal("P5", prodArray[1].Name);
         }
 
-<<<<<<< HEAD
-
         [Fact]
         public void Can_Send_Pagination_View_Model()
         {
-=======
-        [Fact]
-        public void Can_Send_Pagination_View_Model()
-        {
-
->>>>>>> c16f3423e495845ce04589d955a582da533fde77
             // Arrange
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns((new Product[] {
@@ -85,8 +62,4 @@ namespace SportsStore.Tests
             Assert.Equal(2, pageInfo.TotalPages);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c16f3423e495845ce04589d955a582da533fde77
