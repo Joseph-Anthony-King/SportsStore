@@ -17,12 +17,17 @@ namespace SportsStore.Tests
         {
             // Arrange
             var urlHelper = new Mock<IUrlHelper>();
+<<<<<<< HEAD
+=======
+
+>>>>>>> c16f3423e495845ce04589d955a582da533fde77
             urlHelper.SetupSequence(x => x.Action(It.IsAny<UrlActionContext>()))
                 .Returns("Test/Page1")
                 .Returns("Test/Page2")
                 .Returns("Test/Page3");
 
             var urlHelperFactory = new Mock<IUrlHelperFactory>();
+<<<<<<< HEAD
             urlHelperFactory.Setup(f => f.GetUrlHelper(It.IsAny<ActionContext>())).Returns(urlHelper.Object);
 
             PageLinkTagHelper helper =
@@ -44,9 +49,37 @@ namespace SportsStore.Tests
 
             // Act
             helper.Process(ctx, output);
+=======
+
+            urlHelperFactory.Setup(f => f.GetUrlHelper(It.IsAny<ActionContext>())).Returns(urlHelper.Object);
+
+            PageLinkTagHelper helper = new PageLinkTagHelper(urlHelperFactory.Object) {
+                PageModel = new PagingInfo
+                {
+                    CurrentPage = 2,
+                    TotalItems = 28,
+                    ItemsPerPage = 10
+                },
+
+                PageAction = "Test"
+            };
+
+            TagHelperContext cntxt = new TagHelperContext(new TagHelperAttributeList(), new Dictionary<object, object>(),"");
+
+            var content = new Mock<TagHelperContent>();
+
+            TagHelperOutput output = new TagHelperOutput("div", new TagHelperAttributeList(), (cache, encoder) => Task.FromResult(content.Object));
+
+            // Act
+            helper.Process(cntxt, output);
+>>>>>>> c16f3423e495845ce04589d955a582da533fde77
 
             // Assert
             Assert.Equal(@"<a href=""Test/Page1"">1</a><a href=""Test/Page2"">2</a><a href=""Test/Page3"">3</a>", output.Content.GetContent());
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c16f3423e495845ce04589d955a582da533fde77
