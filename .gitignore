@@ -36,3 +36,6 @@ node_modules/
 
 # Exclude bootstrap
 bootstrap
+
+# Exclude SQLite database files
+#*.db

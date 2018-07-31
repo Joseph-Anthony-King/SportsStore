@@ -52,7 +52,7 @@ namespace SportsStore.Models
                         Price=24m },
                     new Product {
                         Name = "European Chess Board",
-                        Description = "Beautiful Chess Set with Hand Carved Board and Pieces",
+                        Description = "Beautiful chess set with hand carved board and pieces",
                         Category = "Chess",
                         Price=80.50m },
                     new Product {
