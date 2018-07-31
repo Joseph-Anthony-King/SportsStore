@@ -33,3 +33,6 @@ msbuild.wrn
 
 # Exclude package management files
 node_modules/
+
+# Exclude bootstrap
+bootstrap
