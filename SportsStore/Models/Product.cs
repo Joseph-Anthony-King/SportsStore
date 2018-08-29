@@ -13,7 +13,8 @@ namespace SportsStore.Models
         [Required(ErrorMessage = "Please enter a product description")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Please enter a price")]
+        [Required]
+        [DataType(DataType.Currency)]
         [Range(0.01, double.MaxValue, ErrorMessage = "Please enter a price greater than $0.00")]
         public decimal Price { get; set; }
 

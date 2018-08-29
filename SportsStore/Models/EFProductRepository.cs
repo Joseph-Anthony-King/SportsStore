@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.SqlClient;
 
 namespace SportsStore.Models
 {
@@ -13,6 +15,19 @@ namespace SportsStore.Models
         }
 
         public IQueryable<Product> Products => context.Products;
+
+        public Product DeleteProduct(int productID)
+        {
+            Product dbEntry = context.Products.FirstOrDefault(prod => prod.ProductID == productID);
+
+            if (dbEntry != null)
+            {
+                context.Products.Remove(dbEntry);
+                context.SaveChanges();
+            }
+
+            return dbEntry;
+        }
 
         public void SaveProduct(Product product)
         {
