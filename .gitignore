@@ -34,9 +34,13 @@ msbuild.wrn
 # Exclude package management files
 node_modules/
 
-# Exclude bootstrap
+# Exclude from lib folder
 bootstrap
+fontawesome
+jquery
+jquery-validation
+jquery-validation-unobtrusive
 
 # Exclude SQLite database files
-#*.db
+*.db
 *.db-journal
