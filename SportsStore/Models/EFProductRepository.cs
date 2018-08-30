@@ -18,7 +18,7 @@ namespace SportsStore.Models
 
         public Product DeleteProduct(int productID, out bool wasDeletionSuccessful)
         {
-            wasDeletionSuccessful = true;
+            wasDeletionSuccessful = false;
             Product dbEntry = context.Products.FirstOrDefault(prod => prod.ProductID == productID);
 
             if (dbEntry != null)
@@ -27,6 +27,7 @@ namespace SportsStore.Models
                 {
                     context.Products.Remove(dbEntry);
                     context.SaveChanges();
+                    wasDeletionSuccessful = true;
                 }
                 catch
                 {
@@ -37,11 +38,14 @@ namespace SportsStore.Models
             return dbEntry;
         }
 
-        public void SaveProduct(Product product)
+        public void SaveProduct(Product product, out bool wasSaveSuccessful)
         {
+            wasSaveSuccessful = false;
+
             if (product.ProductID == 0)
             {
                 context.Products.Add(product);
+                wasSaveSuccessful = true;
             }
             else
             {
@@ -53,6 +57,7 @@ namespace SportsStore.Models
                     dbEntry.Description = product.Description;
                     dbEntry.Price = product.Price;
                     dbEntry.Category = product.Category;
+                    wasSaveSuccessful = true;
                 }
             }
 

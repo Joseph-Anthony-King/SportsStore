@@ -29,11 +29,12 @@ namespace SportsStore.Controllers
         public IActionResult Edit(Product product)
         {
             ViewBag.ViewTitle = "Edit Product";
+            bool wasSaveSuccessful = false;
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                repository.SaveProduct(product);
-                TempData["success"] = true;
+                repository.SaveProduct(product, out wasSaveSuccessful);
+                TempData["success"] = wasSaveSuccessful;
                 TempData["message"] = string.Format("{0} has been saved", product.Name);
                 return RedirectToAction("Index");
             }
