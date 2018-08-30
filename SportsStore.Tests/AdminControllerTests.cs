@@ -101,9 +101,11 @@ namespace SportsStore.Tests
 
             // Act - delete the product
             target.Delete(prod.ProductID);
+            // Note deletion was successful
+            var deleted = true;
 
             // Assert - ensure that the repository delete method was called on the correct product
-            mock.Verify(m => m.DeleteProduct(prod.ProductID));
+            mock.Verify(m => m.DeleteProduct(prod.ProductID, out deleted));
         }
 
         private T GetViewModel<T>(IActionResult result) where T : class

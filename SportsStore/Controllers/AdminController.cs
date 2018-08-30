@@ -33,6 +33,7 @@ namespace SportsStore.Controllers
             if(ModelState.IsValid)
             {
                 repository.SaveProduct(product);
+                TempData["success"] = true;
                 TempData["message"] = string.Format("{0} has been saved", product.Name);
                 return RedirectToAction("Index");
             }
@@ -61,12 +62,12 @@ namespace SportsStore.Controllers
             {
                 if (wasDeletionSuccessful)
                 {
-                    TempData["success"] = "success";
+                    TempData["success"] = true;
                     TempData["message"] = string.Format("{0} was deleted", deletedProduct.Name);
                 }
                 else
                 {
-                    TempData["success"] = "failure";
+                    TempData["success"] = false;
                     TempData["message"] = string.Format("Foreign key constraint prevented deletion of the {0} product", deletedProduct.Name);
                 }
             }
