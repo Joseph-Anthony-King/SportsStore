@@ -53,11 +53,22 @@ namespace SportsStore.Controllers
         [HttpPost]
         public IActionResult Delete(int productId)
         {
-            Product deletedProduct = repository.DeleteProduct(productId);
+            bool wasDeletionSuccessful = false;
+
+            Product deletedProduct = repository.DeleteProduct(productId, out wasDeletionSuccessful);
 
             if (deletedProduct != null)
             {
-                TempData["message"] = string.Format("{0} was deleted", deletedProduct.Name);
+                if (wasDeletionSuccessful)
+                {
+                    TempData["success"] = "success";
+                    TempData["message"] = string.Format("{0} was deleted", deletedProduct.Name);
+                }
+                else
+                {
+                    TempData["success"] = "failure";
+                    TempData["message"] = string.Format("Foreign key constraint prevented deletion of the {0} product", deletedProduct.Name);
+                }
             }
 
             return RedirectToAction("Index");

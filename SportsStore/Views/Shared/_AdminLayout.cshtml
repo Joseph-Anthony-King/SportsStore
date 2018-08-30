@@ -18,9 +18,16 @@
                 @ViewBag.Title
             </h2>
         </div>
-        @if(TempData["message"] != null)
+        @if (TempData["message"] != null)
         {
-            <div class="alert alert-success">@TempData["message"]</div>
+            if (TempData["success"].Equals("success"))
+            {
+                <div class="alert alert-success">@TempData["message"]</div>
+            }
+            else
+            {
+                <div class="alert alert-danger">@TempData["message"]</div>
+            }
         }
         @RenderBody()
     </body>
