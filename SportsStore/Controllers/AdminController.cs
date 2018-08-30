@@ -62,12 +62,12 @@ namespace SportsStore.Controllers
             {
                 if (wasDeletionSuccessful)
                 {
-                    TempData["success"] = true;
+                    TempData["success"] = wasDeletionSuccessful;
                     TempData["message"] = string.Format("{0} was deleted", deletedProduct.Name);
                 }
                 else
                 {
-                    TempData["success"] = false;
+                    TempData["success"] = wasDeletionSuccessful;
                     TempData["message"] = string.Format("Foreign key constraint prevented deletion of the {0} product", deletedProduct.Name);
                 }
             }
