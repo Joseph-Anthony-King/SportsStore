@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <title>Sports Store</title>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet"
-          asp-href-include="/lib/bootstrap/dist/**/*.min.css"
-          asp-href-exclude="**/*-reboot*,**/*-grid*" />
-    <link rel="stylesheet" asp-href-include="/lib/fontawesome/css/*.css" />
-</head>
+    <head>
+        <title>Sports Store</title>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet"
+              asp-href-include="/lib/bootstrap/dist/**/*.min.css"
+              asp-href-exclude="**/*-reboot*,**/*-grid*" />
+        <link rel="stylesheet" asp-href-include="/lib/fontawesome/css/*.css" />
+    </head>
     <body>
         <div class="navbar navbar-dark bg-dark" role="navigation">
             <a class="col navbar-brand text-left" href="/">Sports Store</a>
@@ -23,5 +23,8 @@
                 @RenderBody()
             </div>
         </div>
+        <footer>
+            <p class="text-right">Sports Store by Joseph King © @DateTime.Now.Year</p>
+        </footer>
     </body>
 </html>

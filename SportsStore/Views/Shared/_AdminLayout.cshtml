@@ -7,6 +7,8 @@
         <title>@ViewBag.Title</title>
         <style>
             .input-validation-error { border-color: red; background-color: #fee; }
+            a.admin-logo { color: black; }
+            a.admin-logo:hover { text-decoration: none; }
         </style>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
@@ -14,14 +16,25 @@
     </head>
     <body class="m-1 p-1">
         <div class="bg-info p-2 row">
+            <div class="col-2">
+                <h2>
+                    <a class="admin-logo" href="/">Sports Store</a>
+                </h2>
+            </div>
             <div class="col">
                 <h2>
                     @ViewBag.Title
                 </h2>
             </div>
+            @if (User.Identity.IsAuthenticated)
+            {
             <div class="col-2">
+                <a class="btn btn-sm btn-primary" asp-action="Index" asp-controller="Admin">Admin</a>
+                <a class="btn btn-sm btn-primary" asp-action="List" asp-controller="Order">Ship</a>
+                <a class="btn btn-sm btn-primary" asp-action="Shipped" asp-controller="Order">Recall</a>
                 <a class="btn btn-sm btn-primary" asp-action="Logout" asp-controller="Account">Log Out</a>
             </div>
+            }
         </div>
         @if (TempData["message"] != null)
         {
@@ -37,5 +50,8 @@
             }
         }
         @RenderBody()
+        <footer>
+            <p class="text-right">Sports Store by Joseph King © @DateTime.Now.Year</p>
+        </footer>
     </body>
 </html>

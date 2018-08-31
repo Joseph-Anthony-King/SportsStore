@@ -19,6 +19,9 @@ namespace SportsStore.Controllers
         [Authorize]
         public ViewResult List() => View(repository.Orders.Where(order => !order.Shipped));
 
+        [Authorize]
+        public ViewResult Shipped() => View(repository.Orders.Where(order => order.Shipped));
+
         [HttpPost]
         [Authorize]
         public IActionResult MarkShipped(int orderID)
@@ -32,6 +35,21 @@ namespace SportsStore.Controllers
             }
 
             return RedirectToAction(nameof(List));
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult MarkPending(int orderID)
+        {
+            Order order = repository.Orders.FirstOrDefault(ord => ord.OrderID == orderID);
+
+            if (order != null)
+            {
+                order.Shipped = false;
+                repository.SaveOrder(order);
+            }
+
+            return RedirectToAction(nameof(Shipped));
         }
 
         public ViewResult Checkout() => View(new Order());

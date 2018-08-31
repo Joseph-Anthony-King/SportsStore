@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Order>
 
 @{
-    ViewBag.Title = "Pending Orders";
+    ViewBag.Title = "Shipped Orders";
     Layout = "_AdminLayout";
 }
 
@@ -29,10 +29,10 @@
                     Quantity
                 </th>
                 <td>
-                    <form asp-action="MarkShipped" method="post">
+                    <form asp-action="MarkPending" method="post">
                         <input type="hidden" name="orderID" value="@order.OrderID" />
                         <button type="submit" class="btn btn-sm btn-danger">
-                            Ship
+                            Recall
                         </button>
                     </form>
                 </td>
@@ -51,5 +51,5 @@
 }
 else
 {
-    <div class="text-center">No Unshipped Orders</div>
+    <div class="text-center">No Shipped Orders</div>
 }
